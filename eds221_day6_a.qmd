@@ -1,0 +1,52 @@
+---
+title: "morning session"
+format: html
+editor: visual
+---
+
+## brown bear what do you see 
+
+```{r}
+#---- create vector to iterate over 
+animals <- c("brown bear", "red bird", "yellow duck", "blue horse")
+
+for (i in 1:3) {
+  print(paste0(animals[i], " ", animals[i], ", what do you see? I see a ", animals[i+1], " looking at me"))
+}
+
+
+```
+
+## Tidy Data 
+
+why do we need tidy structure
+
+its a predictable way of organizing data where
+
+-   each variable is its own column
+
+-   each observation is its own row
+
+-   each cell only contains a single value
+
+many people actually do not put their data in like this to begin with!... we usually have to move it
+
+tidy data is not an R thing, or having anything to do with the tidyverse .... it is universal to data science as a whole
+
+you can use the function tidyr::pivot_long() to get the data in this form ... there are also case where multiple variables are in the same column to begin with, and you have to use pivot_wider to split those variables up... there are adjacent functions in base R and the earlier versions of the tidyverse ... interesting that this is something that is currently changing because it seems like its fairly standard
+
+this lets you wrangle the data in a much easier way so we can reuse lots of existing functions...
+
+most functions are built to recognize the columns and do things in a "vectorized" way
+
+in python, you will be using pandas most likely ... there are similarities to tidyr
+
+### Multiple values in a single column
+
+for example... in one column having both age and animal like.... juvenile bobcat
+
+to fix this and split up the values into two different variable columns that you create, use tidyr::seperate()
+
+this is how
+
+dataframe %\>% seperate(col = name, into = c("first_name", "last name", sep = "thing you want to dilineate the seperation")
